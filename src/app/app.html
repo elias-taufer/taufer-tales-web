@@ -1,0 +1,15 @@
+<header style="display:flex;align-items:center;gap:12px;padding:12px 0;">
+  <h1 style="margin:0;">TauferTales</h1>
+  <nav style="margin-left:auto;display:flex;gap:12px;align-items:center;">
+    <a routerLink="/">Tales</a>
+    <ng-container *ngIf="auth.username(); else guest">
+      <span>Hi, {{auth.username()}}!</span>
+      <a href="" (click)="$event.preventDefault(); logout()">Logout</a>
+    </ng-container>
+    <ng-template #guest>
+      <a routerLink="/login">Login</a>
+      <a routerLink="/register">Register</a>
+    </ng-template>
+  </nav>
+</header>
+<router-outlet></router-outlet>
