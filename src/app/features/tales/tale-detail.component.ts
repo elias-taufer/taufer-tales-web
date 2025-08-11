@@ -11,27 +11,53 @@ import { Tale, Review, Comment } from '../../shared/models';
   imports: [CommonModule, RouterLink],
   template: `
     <ng-container *ngIf="tale() as t">
-      <h2>{{t.title}} <small>by {{t.author}}</small></h2>
-      <p>{{t.description}}</p>
-      <a [routerLink]="['/review/new', t.id]">Write Review</a>
-      <h3>Reviews</h3>
-      <article *ngFor="let r of reviews()">
-        <h4>★ {{r.rating}} — {{r.title}} <small>by {{r.username}}</small></h4>
-        <p>{{r.body}}</p>
+      <div class="vstack" style="gap:18px;">
+        <div class="card vstack" style="gap:8px;">
+          <div class="kicker">{{t.publishedYear || 'Year n/a'}}</div>
+          <h2 style="margin:0;">{{t.title}}</h2>
+          <div class="subtle">by {{t.author}}</div>
+          <p>{{t.description}}</p>
+          <div class="hstack" style="gap:10px;">
+            <a class="btn btn-primary" [routerLink]="['/review/new', t.id]">Write Review</a>
+          </div>
+        </div>
+
         <section>
-          <h5>Comments</h5>
-          <div *ngFor="let c of commentsFor(r.id)">
-            <p><strong>{{c.username}}:</strong> {{c.content}}</p>
+          <h3 style="margin:10px 0;">Reviews</h3>
+          <div class="vstack" style="gap:12px;">
+            <article *ngFor="let r of reviews()" class="card vstack" style="gap:6px;">
+              <div class="hstack" style="justify-content:space-between;">
+                <div class="rating">★ {{r.rating}}</div>
+                <div class="subtle">{{r.username}}</div>
+              </div>
+              <div><strong>{{r.title}}</strong></div>
+              <p style="margin:0;">{{r.body}}</p>
+              <div class="hr"></div>
+              <div class="vstack" style="gap:6px;">
+                <div class="kicker">Comments</div>
+                <div *ngFor="let c of commentsFor(r.id)" class="vstack" style="gap:2px;">
+                  <div class="subtle"><strong>{{c.username}}</strong></div>
+                  <div>{{c.content}}</div>
+                </div>
+              </div>
+            </article>
+            <p *ngIf="reviews().length===0" class="subtle">No reviews yet.</p>
           </div>
         </section>
-      </article>
+      </div>
     </ng-container>
   `
 })
 export class TaleDetailComponent {
   route = inject(ActivatedRoute);
-  tales = inject(TalesService); reviewsSvc = inject(ReviewsService); commentsSvc = inject(CommentsService);
-  tale = signal<Tale|null>(null); reviews = signal<Review[]>([]); comments = signal<Comment[]>([]);
+  tales = inject(TalesService);
+  reviewsSvc = inject(ReviewsService);
+  commentsSvc = inject(CommentsService);
+
+  tale = signal<Tale|null>(null);
+  reviews = signal<Review[]>([]);
+  comments = signal<Comment[]>([]);
+
   ngOnInit(){
     const id = Number(this.route.snapshot.paramMap.get('id'));
     this.tales.get(id).subscribe(v => this.tale.set(v));

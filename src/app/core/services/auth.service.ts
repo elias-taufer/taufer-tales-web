@@ -1,29 +1,53 @@
 import { Injectable, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { AuthResponse } from '../../shared/models';
-import { environment } from '../../../environments/environment';
+import { tap } from 'rxjs/operators';
+
+type Session = { username: string; token: string };
+type AuthResponse = { token: string; username: string }; // match your backend
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-  private readonly TOKEN_KEY = 'tt_token';
-  username = signal<string | null>(null);
+  // reactive session
+  private _user = signal<Session | null>(null);
 
-  constructor(private http: HttpClient){
-    const t = localStorage.getItem(this.TOKEN_KEY);
-    if (t) this.username.set(this.parseJwt(t)?.sub ?? null);
+  constructor(private http: HttpClient) {
+    // hydrate from storage on app start/refresh
+    const token = localStorage.getItem('tt_token');
+    const username = localStorage.getItem('tt_username');
+    if (token && username) this._user.set({ username, token });
   }
 
-  login(username: string, password: string){
-    return this.http.post<AuthResponse>(`${environment.apiUrl}/auth/login`, { username, password });
-  }
-  register(username: string, email: string, password: string){
-    // tolerate 201 Created with empty body by requesting text response
-    return this.http.post(`${environment.apiUrl}/auth/register`, { username, email, password }, { responseType: 'text' as 'json' });
+  // ---- template helpers ----
+  user() { return this._user(); }                 // returns Session | null
+  username() { return this._user()?.username ?? null; }
+  isAuthenticated() { return !!this._user(); }
+  token() { return this._user()?.token ?? localStorage.getItem('tt_token'); }
+
+  // ---- API calls ----
+  login(username: string, password: string) {
+    return this.http.post<AuthResponse>('/api/auth/login', { username, password }).pipe(
+      tap(res => {
+        localStorage.setItem('tt_token', res.token);
+        localStorage.setItem('tt_username', res.username);
+        this._user.set({ username: res.username, token: res.token });
+      })
+    );
   }
 
-  setSession(res: AuthResponse){ localStorage.setItem(this.TOKEN_KEY, res.token); this.username.set(res.username); }
-  logout(){ localStorage.removeItem(this.TOKEN_KEY); this.username.set(null); }
-  token(){ return localStorage.getItem(this.TOKEN_KEY); }
+  // if your backend doesn’t return a token on register, remove the set() lines
+  register(username: string, email: string, password: string) {
+    return this.http.post<AuthResponse>('/api/auth/register', { username, email, password }).pipe(
+      tap(res => {
+        localStorage.setItem('tt_token', res.token);
+        localStorage.setItem('tt_username', res.username);
+        this._user.set({ username: res.username, token: res.token });
+      })
+    );
+  }
 
-  private parseJwt(token: string){ try { return JSON.parse(atob(token.split('.')[1])); } catch { return null; } }
+  logout() {
+    localStorage.removeItem('tt_token');
+    localStorage.removeItem('tt_username');
+    this._user.set(null);
+  }
 }

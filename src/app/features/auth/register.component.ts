@@ -6,17 +6,29 @@ import { AuthService } from '../../core/services/auth.service';
 
 @Component({
   standalone: true,
-  selector: 'tt-register',
   imports: [CommonModule, FormsModule],
   template: `
-    <h2>Register</h2>
-    <form (ngSubmit)="onSubmit()">
-      <label>Username <input [(ngModel)]="username" name="u" required></label>
-      <label>Email <input [(ngModel)]="email" name="e" type="email" required></label>
-      <label>Password <input [(ngModel)]="password" name="p" type="password" required></label>
-      <button>Register</button>
-      <p *ngIf="msg" style="color: green;">{{msg}}</p>
-    </form>
+    <div class="vstack" style="gap:12px; max-width:520px;">
+      <h2 style="margin:0;">Create account</h2>
+      <form class="card vstack" style="gap:8px;" (ngSubmit)="onSubmit()">
+        <div class="form-field">
+          <label>Username</label>
+          <input class="input" [(ngModel)]="username" name="u" required>
+        </div>
+        <div class="form-field">
+          <label>Email</label>
+          <input class="input" [(ngModel)]="email" name="e" type="email" required>
+        </div>
+        <div class="form-field">
+          <label>Password</label>
+          <input class="input" [(ngModel)]="password" name="p" type="password" required>
+        </div>
+        <div class="hstack" style="justify-content:flex-end;">
+          <button class="btn btn-primary" type="submit">Register</button>
+        </div>
+        <p *ngIf="msg" class="subtle">{{msg}}</p>
+      </form>
+    </div>
   `
 })
 export class RegisterComponent {
