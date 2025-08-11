@@ -1,9 +1,14 @@
 <header class="appbar">
   <div class="appbar__inner">
-    <div class="hstack">
-      <div class="brand">📚 TauferTales</div>
-      <span class="badge">Demo</span>
-    </div>
+    <a class="brand" routerLink="/" aria-label="TauferTales home">
+      <img
+        class="brand-logo"
+        src="assets/brand/taufer-tales.png"
+        alt="TauferTales logo"
+      />
+    </a>
+    <span class="badge">Demo</span>
+
     <nav class="nav">
       <a routerLink="/">Tales</a>
       <ng-container *ngIf="auth.user(); else guest">
