@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { Router, RouterLink } from '@angular/router';
-import { AuthService } from '../../core/services/auth.service';
+import {Component} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {FormsModule} from '@angular/forms';
+import {Router, RouterLink} from '@angular/router';
+import {AuthService} from '../../core/services/auth.service';
 
 @Component({
   standalone: true,
@@ -30,11 +30,15 @@ import { AuthService } from '../../core/services/auth.service';
 export class LoginComponent {
   username = '';
   password = '';
-  constructor(private auth: AuthService, private router: Router) {}
-  onSubmit(){
+
+  constructor(private auth: AuthService, private router: Router) {
+  }
+
+  onSubmit() {
     this.auth.login(this.username, this.password).subscribe({
       next: () => this.router.navigateByUrl('/'),
-      error: () => {}
+      error: () => {
+      }
     });
   }
 }

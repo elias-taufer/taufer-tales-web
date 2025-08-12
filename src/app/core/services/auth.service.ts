@@ -1,12 +1,12 @@
-import { Injectable, signal } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { tap } from 'rxjs/operators';
-import { environment } from '../../../environments/environment';
+import {Injectable, signal} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {tap} from 'rxjs/operators';
+import {environment} from '../../../environments/environment';
 
 type Session = { username: string; token: string };
 type AuthResponse = { token: string; username: string };
 
-@Injectable({ providedIn: 'root' })
+@Injectable({providedIn: 'root'})
 export class AuthService {
   private _user = signal<Session | null>(null);
 
@@ -14,25 +14,27 @@ export class AuthService {
     const token = localStorage.getItem('tt_token');
     const username = localStorage.getItem('tt_username');
     if (token && username) {
-      this._user.set({ username, token });
+      this._user.set({username, token});
     }
   }
 
   /** Snapshot accessor for templates */
-  user() { return this._user(); }
+  user() {
+    return this._user();
+  }
 
   login(username: string, password: string) {
-    return this.http.post<AuthResponse>(`${environment.apiUrl}/auth/login`, { username, password }).pipe(
+    return this.http.post<AuthResponse>(`${environment.apiUrl}/auth/login`, {username, password}).pipe(
       tap(res => {
         localStorage.setItem('tt_token', res.token);
         localStorage.setItem('tt_username', res.username);
-        this._user.set({ username: res.username, token: res.token });
+        this._user.set({username: res.username, token: res.token});
       })
     );
   }
 
   register(username: string, email: string, password: string) {
-    return this.http.post<void>(`${environment.apiUrl}/auth/register`, { username, email, password });
+    return this.http.post<void>(`${environment.apiUrl}/auth/register`, {username, email, password});
   }
 
   logout() {

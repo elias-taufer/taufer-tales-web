@@ -1,8 +1,8 @@
-import { Component, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
-import { ReviewsService } from '../../core/services/reviews.service';
+import {Component, inject} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {FormsModule} from '@angular/forms';
+import {ActivatedRoute, Router} from '@angular/router';
+import {ReviewsService} from '../../core/services/reviews.service';
 
 @Component({
   standalone: true,
@@ -35,13 +35,16 @@ export class ReviewFormComponent {
   private reviews = inject(ReviewsService);
   private router = inject(Router);
 
-  rating = 5; title = ''; body = '';
+  rating = 5;
+  title = '';
+  body = '';
 
-  save(){
+  save() {
     const taleId = Number(this.route.snapshot.paramMap.get('taleId'));
-    this.reviews.create({ taleId, rating: this.rating, title: this.title, body: this.body }).subscribe({
+    this.reviews.create({taleId, rating: this.rating, title: this.title, body: this.body}).subscribe({
       next: () => this.router.navigateByUrl(`/tale/${taleId}`),
-      error: () => {}
+      error: () => {
+      }
     });
   }
 }

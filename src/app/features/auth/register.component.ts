@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
-import { AuthService } from '../../core/services/auth.service';
+import {Component} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {FormsModule} from '@angular/forms';
+import {Router} from '@angular/router';
+import {AuthService} from '../../core/services/auth.service';
 
 @Component({
   standalone: true,
@@ -32,12 +32,23 @@ import { AuthService } from '../../core/services/auth.service';
   `
 })
 export class RegisterComponent {
-  username=''; email=''; password=''; msg='';
-  constructor(private auth: AuthService, private router: Router){}
-  onSubmit(){
+  username = '';
+  email = '';
+  password = '';
+  msg = '';
+
+  constructor(private auth: AuthService, private router: Router) {
+  }
+
+  onSubmit() {
     this.auth.register(this.username, this.email, this.password).subscribe({
-      next: () => { this.msg = 'Registration successful. Please log in.'; this.router.navigateByUrl('/login'); },
-      error: () => { this.msg = 'Registration failed.'; }
+      next: () => {
+        this.msg = 'Registration successful. Please log in.';
+        this.router.navigateByUrl('/login');
+      },
+      error: () => {
+        this.msg = 'Registration failed.';
+      }
     });
   }
 }

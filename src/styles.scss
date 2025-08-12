@@ -1,24 +1,29 @@
 /* You can add global styles to this file, and also import other style files */
 
 
-
 :root {
   --brand-900: #2D3A00;
   --brand-800: #2D4B00;
   --brand-600: #55661B;
-  --ink-900:   #403526;
-  --accent-500:#B87E53;
+  --ink-900: #403526;
+  --accent-500: #B87E53;
   --bg: #F7F6F1;
   --card: #ffffff;
   --ink: #2a2a2a;
   --muted: #6b6b6b;
   --radius: 14px;
-  --shadow: 0 2px 10px rgba(0,0,0,0.06);
+  --shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
   --appbar-h: 80px;
 }
 
-* { box-sizing: border-box; }
-html, body { height: 100%; }
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
 body {
   margin: 0;
   font: 14px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif;
@@ -26,8 +31,14 @@ body {
   background: var(--bg);
 }
 
-a { color: var(--brand-800); text-decoration: none; }
-a:hover { text-decoration: underline; }
+a {
+  color: var(--brand-800);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
 
 .container {
   width: min(1100px, 92%);
@@ -38,22 +49,45 @@ a:hover { text-decoration: underline; }
 header.appbar {
   background: linear-gradient(0deg, var(--brand-800), var(--brand-900));
   color: #fff;
-  position: sticky; top: 0; z-index: 20;
-  box-shadow: 0 4px 18px rgba(0,0,0,0.12);
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.12);
   height: var(--appbar-h);
 }
+
 .appbar__inner {
   width: min(1100px, 92%);
   margin: 0 auto;
-  display: flex; align-items: center; gap: 16px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
   height: 100%;
   padding: 0;
 }
-.brand { display: flex; align-items: center; height: 100%; }
 
-.nav { margin-left: auto; display: flex; gap: 14px; align-items: center; }
-.nav a { color: #fff; opacity: 0.95; }
-.nav a:hover { opacity: 1; text-decoration: underline; }
+.brand {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.nav {
+  margin-left: auto;
+  display: flex;
+  gap: 14px;
+  align-items: center;
+}
+
+.nav a {
+  color: #fff;
+  opacity: 0.95;
+}
+
+.nav a:hover {
+  opacity: 1;
+  text-decoration: underline;
+}
 
 .card {
   background: var(--card);
@@ -63,14 +97,33 @@ header.appbar {
 }
 
 .btn {
-  display: inline-flex; align-items: center; gap: 8px;
-  border: 0; border-radius: 999px;
-  padding: 10px 16px; font-weight: 600; cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 0;
+  border-radius: 999px;
+  padding: 10px 16px;
+  font-weight: 600;
+  cursor: pointer;
 }
-.btn-primary { background: var(--accent-500); color: #fff; }
-.btn-primary:hover { filter: brightness(0.95); }
-.btn-ghost { background: transparent; color: var(--brand-800); }
-.btn-ghost:hover { background: rgba(255,255,255,0.2); }
+
+.btn-primary {
+  background: var(--accent-500);
+  color: #fff;
+}
+
+.btn-primary:hover {
+  filter: brightness(0.95);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--brand-800);
+}
+
+.btn-ghost:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
 
 .input, textarea, select {
   width: 100%;
@@ -80,23 +133,72 @@ header.appbar {
   padding: 10px 12px;
   outline: none;
 }
-.input:focus, textarea:focus { border-color: var(--brand-600); box-shadow: 0 0 0 3px rgba(85,102,27,0.15); }
 
-.form-field { display: grid; gap: 6px; margin-bottom: 12px; }
-.form-field label { font-weight: 600; color: var(--ink-900); }
+.input:focus, textarea:focus {
+  border-color: var(--brand-600);
+  box-shadow: 0 0 0 3px rgba(85, 102, 27, 0.15);
+}
+
+.form-field {
+  display: grid;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.form-field label {
+  font-weight: 600;
+  color: var(--ink-900);
+}
 
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
   gap: 14px;
 }
-.subtle { color: var(--muted); }
-.kicker { text-transform: uppercase; letter-spacing: .12em; font-size: 11px; color: var(--brand-600); font-weight: 700; }
-.hstack { display:flex; align-items:center; gap: 10px; }
-.vstack { display:flex; flex-direction:column; gap: 8px; }
-.hr { height: 1px; background: #eceae2; margin: 10px 0; }
-.badge { display:inline-block; padding: 3px 8px; border-radius: 999px; font-size: 12px; background: #f1ede5; color: var(--ink-900);}
-.rating { color: var(--accent-500); font-weight:700; }
+
+.subtle {
+  //color: var(--muted);
+}
+
+.kicker {
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  font-size: 11px;
+  color: var(--brand-600);
+  font-weight: 700;
+}
+
+.hstack {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.vstack {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.hr {
+  height: 1px;
+  background: #eceae2;
+  margin: 10px 0;
+}
+
+.badge {
+  display: inline-block;
+  padding: 3px 8px;
+  border-radius: 999px;
+  font-size: 12px;
+  background: #f1ede5;
+  color: var(--ink-900);
+}
+
+.rating {
+  color: var(--accent-500);
+  font-weight: 700;
+}
 
 .brand-logo {
   display: block;

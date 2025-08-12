@@ -1,8 +1,9 @@
-import { Component, inject, signal } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { RouterLink } from '@angular/router';
-import { TalesService } from '../../core/services/tales.service';
-import { Tale } from '../../shared/models';
+import {Component, inject, signal} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {RouterLink} from '@angular/router';
+import {TalesService} from '../../core/services/tales.service';
+import {Tale} from '../../shared/models';
+import {AuthService} from '../../core/services/auth.service';
 
 @Component({
   standalone: true,
@@ -16,12 +17,12 @@ import { Tale } from '../../shared/models';
       </div>
       <div class="grid">
         <article *ngFor="let t of tales()" class="card">
-          <div class="kicker">{{t.publishedYear || 'Year n/a'}}</div>
-          <h3 style="margin:6px 0 4px;">{{t.title}}</h3>
-          <div class="subtle">by {{t.author}}</div>
+          <div class="kicker">{{ t.publishedYear || 'Year n/a' }}</div>
+          <h3 style="margin:6px 0 4px;">{{ t.title }}</h3>
+          <div class="subtle">by {{ t.author }}</div>
           <div class="hr"></div>
           <div class="hstack" style="justify-content:space-between; align-items:flex-end;">
-            <div class="subtle">Tags: {{t.tags || '—'}}</div>
+            <div class="subtle">Tags: {{ t.tags || '—' }}</div>
             <a class="btn btn-primary" [routerLink]="['/tale', t.id]">View</a>
           </div>
         </article>
@@ -31,10 +32,21 @@ import { Tale } from '../../shared/models';
   `
 })
 export class TalesListComponent {
+  auth = inject(AuthService);
   private svc = inject(TalesService);
   tales = signal<Tale[]>([]);
   private lastQuery = '';
-  ngOnInit(){ this.fetch(); }
-  search(q: string){ this.lastQuery = q ?? ''; this.fetch(); }
-  private fetch(){ this.svc.list(this.lastQuery).subscribe(p => this.tales.set(p.content)); }
+
+  ngOnInit() {
+    this.fetch();
+  }
+
+  search(q: string) {
+    this.lastQuery = q ?? '';
+    this.fetch();
+  }
+
+  private fetch() {
+    this.svc.list(this.lastQuery).subscribe(p => this.tales.set(p.content));
+  }
 }
