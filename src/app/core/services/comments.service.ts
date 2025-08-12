@@ -6,6 +6,10 @@ import { Comment } from '../../shared/models';
 @Injectable({ providedIn: 'root' })
 export class CommentsService {
   constructor(private http: HttpClient){}
-  forReview(reviewId: number){ return this.http.get<Comment[]>(`${environment.apiUrl}/comments/review/${reviewId}`); }
-  create(dto: { reviewId: number; parentId?: number | null; content: string; }){ return this.http.post(`${environment.apiUrl}/comments`, dto); }
+  forReview(reviewId: number){ 
+    return this.http.get<Comment[]>(`${environment.apiUrl}/comments/review/${reviewId}`); 
+  }
+  create(dto: { reviewId: number; parentId?: number | null; content: string }){
+    return this.http.post<Comment>(`${environment.apiUrl}/comments`, dto);
+  }
 }

@@ -4,6 +4,7 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
 import { TalesService } from '../../core/services/tales.service';
 import { ReviewsService } from '../../core/services/reviews.service';
 import { CommentsService } from '../../core/services/comments.service';
+import { AuthService } from '../../core/services/auth.service';
 import { Tale, Review, Comment } from '../../shared/models';
 
 @Component({
@@ -18,7 +19,7 @@ import { Tale, Review, Comment } from '../../shared/models';
           <div class="subtle">by {{t.author}}</div>
           <p>{{t.description}}</p>
           <div class="hstack" style="gap:10px;">
-            <a class="btn btn-primary" [routerLink]="['/review/new', t.id]">Write Review</a>
+            <a *ngIf="auth.user()" class="btn btn-primary" [routerLink]="['/review/new', t.id]">Write Review</a>
           </div>
         </div>
 
@@ -53,6 +54,7 @@ export class TaleDetailComponent {
   tales = inject(TalesService);
   reviewsSvc = inject(ReviewsService);
   commentsSvc = inject(CommentsService);
+  auth = inject(AuthService);
 
   tale = signal<Tale|null>(null);
   reviews = signal<Review[]>([]);
