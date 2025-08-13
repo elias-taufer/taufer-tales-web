@@ -9,15 +9,15 @@ export const routes: Routes = [
       import('./features/tales/tales-list.component').then(m => m.TalesListComponent),
   },
   {
-    path: 'tale/:id',
-    loadComponent: () =>
-      import('./features/tales/tale-detail.component').then(m => m.TaleDetailComponent),
-  },
-  {
     path: 'tale/new',
     canActivate: [authGuard],
     loadComponent: () =>
       import('./features/tales/tale-form.component').then(m => m.TaleFormComponent),
+  },
+  {
+    path: 'tale/:id',
+    loadComponent: () =>
+      import('./features/tales/tale-detail.component').then(m => m.TaleDetailComponent),
   },
   {
     path: 'review/new/:taleId',

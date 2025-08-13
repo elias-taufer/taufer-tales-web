@@ -13,21 +13,20 @@ import {AuthService} from '../../core/services/auth.service';
     <div class="vstack" style="gap:14px;">
       <div class="hstack" style="justify-content:space-between;">
         <h2 style="margin:0;">Tales</h2>
-        <input class="input" style="max-width:320px;" #q placeholder="Search" (input)="search(q.value)">
+        <input class="input" style="max-width:320px;" #q placeholder="Search" (input)="search(q.value)" />
       </div>
+
       <div class="grid">
-        <article *ngFor="let t of tales()" class="card">
-          <div class="kicker">{{ t.publishedYear || 'Year n/a' }}</div>
-          <h3 style="margin:6px 0 4px;">{{ t.title }}</h3>
-          <div class="subtle">by {{ t.author }}</div>
-          <div class="hr"></div>
-          <div class="hstack" style="justify-content:space-between; align-items:flex-end;">
-            <div class="subtle">Tags: {{ t.tags || '—' }}</div>
-            <a class="btn btn-primary" [routerLink]="['/tale', t.id]">View</a>
-          </div>
-        </article>
+        @for (t of tales(); track t.id) {
+          <a class="card tale-item" [routerLink]="['/tale', t.id]">
+            <div class="kicker">{{ t.publishedYear || 'Year n/a' }}</div>
+            <h3 style="margin:6px 0 4px;">{{ t.title }}</h3>
+            <div class="subtle">by {{ t.author }}</div>
+          </a>
+        } @empty {
+          <p class="subtle">No tales yet. Add one via the API.</p>
+        }
       </div>
-      <p *ngIf="tales().length === 0" class="subtle">No tales yet. Add one via the API.</p>
     </div>
   `
 })

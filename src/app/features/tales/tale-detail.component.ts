@@ -77,6 +77,9 @@ export class TaleDetailComponent {
     this.api.get(id).subscribe(t => this.tale.set(t as any));
     this.reviewsApi.forTale(id).subscribe(rs => this.reviews.set(rs));
     // also fetch the current user's review
-    this.reviewsApi.myForTale(id).subscribe(r => this.myReview.set(r));
+    this.reviewsApi.myForTale(id).subscribe({
+      next: r => this.myReview.set(r),
+      error: () => this.myReview.set(null),
+    });
   }
 }
