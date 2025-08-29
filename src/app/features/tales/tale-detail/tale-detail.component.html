@@ -1,0 +1,72 @@
+@if (tale()?.id && auth.user()) {
+  <div class="hstack" style="justify-content:flex-end; gap:8px; margin-bottom:8px;">
+    <a [routerLink]="['/tale', tale()?.id, 'edit']" class="btn btn-primary">{{ 'COMMON.EDIT' | t }}</a>
+  </div>
+}
+<div class="vstack" style="gap:18px;">
+  <h2 style="margin:0;">{{ tale()?.title }}</h2>
+  <div class="muted">{{ tale()?.author }}</div>
+
+  @if (tale()?.coverUrl) {
+    <img [src]="tale()?.coverUrl" alt="Cover of {{ tale()?.title }}" style="width:160px;height:240px;object-fit:cover;border-radius:var(--radius);" />
+  }
+
+
+  @if (auth.user()) {
+    <div class="card">
+      <div class="vstack" style="gap:8px;">
+        <div class="muted">{{ 'STATUS.MY_STATUS' | t }}</div>
+        <div class="hstack" style="gap:8px; align-items:center;">
+          <select class="input" [value]="myStatus() || ''" (change)="onStatusChange($any($event.target).value)">
+            <option value="">{{ 'STATUS.SELECT' | t }}</option>
+            <option value="WANT_TO_READ">{{ 'STATUS.WANT_TO_READ' | t }}</option>
+            <option value="CURRENTLY_READING">{{ 'STATUS.READING' | t }}</option>
+            <option value="ALREADY_READ">{{ 'STATUS.READ' | t }}</option>
+            <option value="DISCONTINUED">{{ 'STATUS.DISCONTINUED' | t }}</option>
+          </select>
+          @if (myStatus()) {
+            <button class="btn" (click)="clear()">⛌</button>
+          }
+        </div>
+      </div>
+    </div>
+  }
+
+  @if (tale()?.description) {
+    <div class="card">
+      <div class="muted">{{ 'COMMON.DESCRIPTION' | t }}</div>
+      <p>{{ tale()?.description }}</p>
+    </div>
+  }
+
+  <div class="card">
+    <div class="hstack" style="justify-content:space-between; align-items:center;">
+      <div class="muted">{{ 'REVIEW.REVIEWS' | t }} ({{ reviews().length }})</div>
+      @if (auth.user() && tale()) {
+        @if (!myReview()) {
+          <a class="btn btn-primary" [routerLink]="['/review/new', tale()?.id]">+ Add review</a>
+        } @else {
+          <div class="hstack" style="gap:8px;">
+            <a class="btn" [routerLink]="['/review/edit', myReview()?.id]">{{ 'REVIEW.EDIT_TITLE' | t }}</a>
+            <button class="btn" (click)="deleteMyReview()">{{ 'COMMON.DELETE' | t }}</button>
+          </div>
+        }
+      }
+    </div>
+
+    <div class="vstack" style="gap:12px;">
+      @for (r of reviews(); track r.id) {
+        <div class="card" style="border:1px solid #eee;">
+          <div class="hstack" style="justify-content:space-between;">
+            <strong>{{ r.title }}</strong>
+            <span class="rating">{{ r.rating }}</span>
+          </div>
+          <div class="muted">{{ 'COMMON.BY' | t }} {{ r.username }}</div>
+          <p>{{ r.body }}</p>
+        </div>
+      } @empty {
+        <div class="muted">No reviews yet.</div>
+      }
+    </div>
+  </div>
+</div>

@@ -1,0 +1,26 @@
+<div class="vstack" style="gap:14px;">
+  <div class="hstack" style="justify-content: space-between; align-items: center;">
+    <h2 style="margin:0;">{{ 'BOOKSHELF.TITLE' | t }}</h2>
+    <div class="hstack" style="gap:8px;">
+      <button class="btn" [class.btn-primary]="filter()===null" (click)="applyFilter(null)">{{ 'COMMON.ALL' | t }}</button>
+      <button class="btn" [class.btn-primary]="filter()==='WANT_TO_READ'" (click)="applyFilter('WANT_TO_READ')">{{ 'STATUS.WANT_TO_READ' | t }}</button>
+      <button class="btn" [class.btn-primary]="filter()==='CURRENTLY_READING'" (click)="applyFilter('CURRENTLY_READING')">{{ 'STATUS.READING' | t }}</button>
+      <button class="btn" [class.btn-primary]="filter()==='ALREADY_READ'" (click)="applyFilter('ALREADY_READ')">{{ 'STATUS.READ' | t }}</button>
+      <button class="btn" [class.btn-primary]="filter()==='DISCONTINUED'" (click)="applyFilter('DISCONTINUED')">{{ 'STATUS.DISCONTINUED' | t }}</button>
+    </div>
+  </div>
+
+  <div class="grid">
+    @for (it of items(); track it.tale.id) {
+      <tt-tale-tile
+        [tale]="it.tale"
+        [myStatus]="it.status"
+        [showStatusControls]="true"
+        (statusChange)="onStatusChange(it.tale.id, $event || '')"
+        (clear)="clear(it.tale.id)">
+      </tt-tale-tile>
+    } @empty {
+      <div class="muted">{{ 'BOOKSHELF.EMPTY_FILTER' | t }}</div>
+    }
+  </div>
+</div>

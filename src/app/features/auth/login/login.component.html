@@ -1,0 +1,17 @@
+<div class="vstack" style="gap:12px; max-width:520px;">
+  <h2 style="margin:0;">{{ 'NAV.LOGIN' | t }}</h2>
+  <form class="card vstack" style="gap:8px;" (ngSubmit)="onSubmit()">
+    <div class="form-field">
+      <label>{{ 'COMMON.USERNAME' | t }}</label>
+      <input class="input" [(ngModel)]="username" name="u" required>
+    </div>
+    <div class="form-field">
+      <label>{{ 'COMMON.PASSWORD' | t }}</label>
+      <input class="input" [(ngModel)]="password" name="p" type="password" required>
+    </div>
+    <div class="hstack" style="justify-content:space-between;">
+      <a class="btn btn-ghost" routerLink="/register">{{ 'AUTH.CREATE_ACCOUNT' | t }}</a>
+      <button class="btn btn-primary" type="submit">{{ 'NAV.LOGIN' | t }}</button>
+    </div>
+  </form>
+</div>

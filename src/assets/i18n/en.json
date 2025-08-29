@@ -1,0 +1,70 @@
+{
+  "NAV": {
+    "TALES": "Tales",
+    "BOOKSHELF": "Bookshelf",
+    "NEW_TALE": "+ New Tale",
+    "LOGIN": "Login",
+    "REGISTER": "Register",
+    "LOGOUT": "Logout"
+  },
+  "LEGAL": {
+    "PRIVACY": "Privacy Policy",
+    "IMPRINT": "Imprint"
+  },
+  "FOOTER": {
+    "LANGUAGE": "Language",
+    "EN": "English",
+    "DE": "German"
+  },
+  "COMMON": {
+    "TITLE": "Title",
+    "AUTHOR": "Author",
+    "DESCRIPTION": "Description",
+    "USERNAME": "Username",
+    "PASSWORD": "Password",
+    "CONFIRM_PASSWORD": "Confirm password",
+    "PASSWORDS_NOT_MATCH": "Passwords do not match.",
+    "SAVE": "Save",
+    "CREATE": "Create",
+    "CANCEL": "Cancel",
+    "ALL": "All",
+    "EDIT": "Edit",
+    "DELETE": "Delete",
+    "BODY": "Body",
+    "BY": "by"
+  },
+  "AUTH": {
+    "CREATE_ACCOUNT": "Create account",
+    "AGREE_PRIVACY": "I agree to the privacy policy"
+  },
+  "TALES": {
+    "LIST_TITLE": "Tales",
+    "NO_TALES": "No tales found."
+  },
+  "TALE": {
+    "ISBN": "ISBN",
+    "PUBLISHED_YEAR": "Published year",
+    "PAGES": "Pages",
+    "COVER_URL": "Cover URL"
+  },
+  "REVIEW": {
+    "EDIT_TITLE": "Edit Review",
+    "NEW_TITLE": "New Review",
+    "YOUR_RATING": "Your rating",
+    "ADD_REVIEW": "Add Review",
+    "REVIEW_THIS_TALE": "Review this tale",
+    "REVIEWS": "Reviews"
+  },
+  "BOOKSHELF": {
+    "TITLE": "My Bookshelf",
+    "EMPTY_FILTER": "No items found for this filter."
+  },
+  "STATUS": {
+    "SELECT": "Select Status",
+    "WANT_TO_READ": "Want to read",
+    "READING": "Currently reading",
+    "READ": "Already read",
+    "DISCONTINUED": "Discontinued",
+    "MY_STATUS": "My status"
+  }
+}

@@ -1,0 +1,42 @@
+header.appbar {
+  background: linear-gradient(0deg, var(--brand-800), var(--brand-900));
+  color: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.12);
+  height: var(--appbar-h);
+}
+
+.appbar__inner {
+  width: min(1100px, 92%);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  height: 100%;
+  padding: 0;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.badge {
+  display: inline-block;
+  padding: 3px 8px;
+  border-radius: 999px;
+  font-size: 12px;
+  background: #f1ede5;
+  color: var(--ink-900);
+}
+
+.brand-logo {
+  display: block;
+  height: calc(var(--appbar-h) - 8px);
+  width: auto;
+  object-fit: contain;
+  max-height: 100%;
+}

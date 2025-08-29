@@ -1,0 +1,20 @@
+<div class="vstack" style="gap:14px;">
+  <div class="hstack" style="justify-content:space-between; align-items:center;">
+    <h2 style="margin:0;">{{ 'NAV.TALES' | t }}</h2>
+    <input class="input" style="max-width:320px;" #q placeholder="Search" (input)="search(q.value)" />
+  </div>
+
+  <div class="grid tale-card-row">
+    @for (t of tales(); track t.id) {
+      <tt-tale-tile
+        [tale]="t"
+        [myStatus]="statusOf(t.id) || null"
+        [showStatusControls]="isLoggedIn()"
+        (statusChange)="onStatusChange(t.id, $event || '')"
+        (clear)="clear(t.id)">
+      </tt-tale-tile>
+    } @empty {
+      <div class="muted">{{ 'TALES.NO_TALES' | t }}</div>
+    }
+  </div>
+</div>

@@ -1,0 +1,51 @@
+<header class="appbar">
+  <div class="appbar__inner">
+
+    <a aria-label="TauferTales home" class="brand" routerLink="/">
+      <img
+        alt="TauferTales logo"
+        class="brand-logo"
+        height="1024"
+        ngSrc="assets/brand/taufer-tales.png" priority
+        width="1024"
+      />
+    </a>
+
+    <span class="badge">Demo</span>
+
+    <nav class="nav">
+      @if (auth.user(); as u) {
+        <span class="subtle">Hi, {{ auth.user()?.username }}!</span>
+        <a routerLink="/" class="btn btn-primary">{{ 'NAV.TALES' | t }}</a>
+        <a routerLink="/my/books" class="btn btn-primary">{{ 'NAV.BOOKSHELF' | t }}</a>
+        <a routerLink="/tale/new" class="btn btn-primary">{{ 'NAV.NEW_TALE' | t }}</a>
+        <a href="" (click)="$event.preventDefault(); logout()" class="btn btn-primary">{{ 'NAV.LOGOUT' | t }}</a>
+      } @else {
+        <a routerLink="/" class="btn btn-primary">{{ 'NAV.TALES' | t }}</a>
+        <a routerLink="/login" class="btn btn-primary">{{ 'NAV.LOGIN' | t }}</a>
+        <a routerLink="/register" class="btn btn-primary">{{ 'NAV.REGISTER' | t }}</a>
+      }
+    </nav>
+
+  </div>
+</header>
+<main class="container">
+  <router-outlet></router-outlet>
+</main>
+<footer class="container" style="margin-top:32px;padding-top:16px;border-top:1px solid #eee;">
+  <div class="footer__lang">
+    <label for="tt-lang" class="sr-only">{{ 'FOOTER.LANGUAGE' | t }}</label>
+    <select id="tt-lang" class="input"
+            (change)="changeLang($any($event.target).value)"
+            [value]="i18n.lang()" [attr.aria-label]="'FOOTER.LANGUAGE' | t" style="max-width:200px;">
+      <option value="en">{{ 'FOOTER.EN' | t }}</option>
+      <option value="de">{{ 'FOOTER.DE' | t }}</option>
+    </select>
+  </div>
+
+  <div class="vstack" style="gap:8px;align-items:flex-start;">
+    <a class="link" routerLink="/datenschutz">{{ 'LEGAL.PRIVACY' | t }}</a>
+    <a class="link" routerLink="/impressum">{{ 'LEGAL.IMPRINT' | t }}</a>
+  </div>
+</footer>
+

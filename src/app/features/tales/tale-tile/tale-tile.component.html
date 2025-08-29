@@ -1,0 +1,52 @@
+<div class="card tale-card" [class.has-controls]="showStatusControls">
+  <a class="tale-link" [routerLink]="['/tale', tale.id]">
+    <div class="vstack" style="gap:4px;">
+      <div class="tale-title">{{ tale.title }}</div>
+      <div class="muted" style="font-size:13px;">{{ tale.author }}</div>
+    </div>
+  </a>
+
+  <div class="hstack" style="gap:12px; align-items:center;">
+    @if (tale.coverUrl) {
+      <img [src]="tale.coverUrl" alt="Cover of {{tale.title}}"
+           style="width:64px;height:96px;object-fit:cover;border-radius:var(--radius);"/>
+    } @else {
+      <img [src]="'assets/brand/taufer-tales-no-text.png'" alt="No cover available"
+           style="width:64px;height:96px;object-fit:cover;border-radius:var(--radius);opacity:0.75;"/>
+    }
+    <div class="vstack" style="gap:4px; flex:1;">
+
+
+      @if (tale.avgRating !== null && tale.avgRating !== undefined) {
+        <div class="muted">
+          ★ {{ tale.avgRating | number:'1.1-1' }}
+        </div>
+      } @else {
+        <div class="muted">
+          ★ -
+        </div>
+      }
+
+      @if (showStatusControls) {
+        <ng-container>
+          <div class="status-section">
+            <div class="hstack" style="gap:8px;">
+              <select class="status-select" id="status-{{tale.id}}"
+                      [value]="myStatus || ''"
+                      (change)="onSelect($any($event.target).value)">
+                <option value="">{{ 'STATUS.SELECT' | t }}</option>
+                <option value="WANT_TO_READ">{{ 'STATUS.WANT_TO_READ' | t }}</option>
+                <option value="CURRENTLY_READING">{{ 'STATUS.READING' | t }}</option>
+                <option value="ALREADY_READ">{{ 'STATUS.READ' | t }}</option>
+                <option value="DISCONTINUED">{{ 'STATUS.DISCONTINUED' | t }}</option>
+              </select>
+              @if (myStatus) {
+                <button class="btn" (click)="clear.emit()">⛌</button>
+              }
+            </div>
+          </div>
+        </ng-container>
+      }
+    </div>
+  </div>
+</div>

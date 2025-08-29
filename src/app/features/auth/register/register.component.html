@@ -1,0 +1,29 @@
+<div class="vstack" style="gap:12px; max-width:520px;">
+  <h2 style="margin:0;">{{ 'AUTH.CREATE_ACCOUNT' | t }}</h2>
+  <form class="card vstack" style="gap:8px;" (ngSubmit)="onSubmit()">
+    <div class="form-field">
+      <label>{{ 'COMMON.USERNAME' | t }}</label>
+      <input class="input" [(ngModel)]="username" name="u" required>
+    </div>
+    <div class="form-field"><label>{{ 'COMMON.PASSWORD' | t }}</label>
+      <input class="input" [(ngModel)]="password" name="p" type="password" required>
+    </div>
+    <div class="form-field"><label>{{ 'COMMON.CONFIRM_PASSWORD' | t }}</label>
+      <input class="input" [(ngModel)]="confirmPassword" name="cp" type="password" required>
+    </div>
+    @if (password && confirmPassword && password !== confirmPassword) {
+      <p class="subtle">{{ 'COMMON.PASSWORDS_NOT_MATCH' | t }}</p>
+    }
+
+    <div class="check-box">
+      <input type="checkbox" [(ngModel)]="privacyAccepted" name="d">
+      <label>{{ 'AUTH.AGREE_PRIVACY' | t }}</label>
+    </div>
+    <div class="hstack" style="justify-content:flex-end;">
+      <button class="btn btn-primary" type="submit">{{ 'NAV.REGISTER' | t }}</button>
+    </div>
+    @if (msg) {
+      <p class="subtle">{{ msg }}</p>
+    }
+  </form>
+</div>

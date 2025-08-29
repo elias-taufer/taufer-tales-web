@@ -1,0 +1,1 @@
+export type ReadingStatus = 'WANT_TO_READ' | 'ALREADY_READ' | 'CURRENTLY_READING' | 'DISCONTINUED';
