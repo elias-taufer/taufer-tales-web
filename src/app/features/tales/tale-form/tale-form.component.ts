@@ -11,8 +11,12 @@ import {Tale, TaleCreate} from '../../../shared/models/tale.model';
   selector: 'app-tale-form',
   imports: [CommonModule, FormsModule, TranslatePipe],
   templateUrl: 'tale-form.component.html',
+  styleUrl: 'tale-form.component.scss',
 })
 export class TaleFormComponent {
+
+  importing = false;
+
   editId: number | null = null;
   saving = false;
   error: string | null = null;
@@ -71,6 +75,28 @@ export class TaleFormComponent {
       error: (err) => {
         this.saving = false;
         this.error = err?.error?.detail || 'Failed to save tale';
+      }
+    });
+  }
+
+  loadFromOpenLibrary() {
+    const isbn = this.model?.isbn?.trim();
+    if (!isbn) {
+      this.error = 'Please enter an ISBN first.'; // or translate key if you prefer
+      return;
+    }
+
+    this.error = '';
+    this.importing = true;
+
+    this.tales.importByIsbn(isbn).subscribe({
+      next: (tale) => {
+        this.importing = false;
+        this.goBack();
+      },
+      error: (err) => {
+        this.importing = false;
+        this.error = err?.error?.message ?? 'Import failed.';
       }
     });
   }

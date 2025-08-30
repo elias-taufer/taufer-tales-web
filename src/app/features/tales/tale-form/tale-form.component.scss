@@ -1,0 +1,26 @@
+.form-row.two-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+@media (max-width: 640px) {
+  .form-row.two-cols {
+    grid-template-columns: 1fr;
+  }
+}
+
+.input-row {
+  display: flex;
+  align-items: stretch;
+  gap: 8px;
+}
+
+.input-row .input {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.input-row .btn {
+  white-space: nowrap;
+}

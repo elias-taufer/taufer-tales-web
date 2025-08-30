@@ -1,34 +1,60 @@
 <section class="card vstack">
-  <h2>{{ editId ? 'Edit Tale' : 'Add Tale' }}</h2>
+  <h2>{{ (editId ? 'TALE.EDIT_TALE' : 'TALE.ADD_TALE') | t }}</h2>
+
   <form (ngSubmit)="save()" #f="ngForm" class="vstack">
-    <div class="form-field">
-      <label for="title">{{ 'COMMON.TITLE' | t }}</label>
-      <input class="input" id="title" name="title" [(ngModel)]="model.title" required/>
+
+    <div class="form-row two-cols">
+      <div class="form-field">
+        <label for="title">{{ 'COMMON.TITLE' | t }}</label>
+        <input class="input" id="title" name="title" [(ngModel)]="model.title" required />
+      </div>
+
+      <div class="form-field">
+        <label for="author">{{ 'COMMON.AUTHOR' | t }}</label>
+        <input class="input" id="author" name="author" [(ngModel)]="model.author" required />
+      </div>
     </div>
 
-    <div class="form-field">
-      <label for="author">{{ 'COMMON.AUTHOR' | t }}</label>
-      <input class="input" id="author" name="author" [(ngModel)]="model.author" required/>
+    <div class="form-row two-cols">
+      <div class="form-field">
+        <label for="tags">Tags (comma separated)</label>
+        <input class="input" id="tags" name="tags" [(ngModel)]="model.tags"/>
+      </div>
+
+      <div class="form-field">
+        <label for="publishedYear">{{ 'TALE.PUBLISHED_YEAR' | t }}</label>
+        <input class="input" id="publishedYear" name="publishedYear" type="number" [(ngModel)]="model.publishedYear"/>
+      </div>
     </div>
 
-    <div class="form-field">
-      <label for="isbn">{{ 'TALE.ISBN' | t }}</label>
-      <input class="input" id="isbn" name="isbn" [(ngModel)]="model.isbn"/>
-    </div>
+    <div class="form-row two-cols">
+      <div class="form-field">
+        <label for="coverUrl">{{ 'TALE.COVER_URL' | t }}</label>
+        <input class="input" id="coverUrl" name="coverUrl" [(ngModel)]="model.coverUrl"/>
+      </div>
 
-    <div class="form-field">
-      <label for="publishedYear">{{ 'TALE.PUBLISHED_YEAR' | t }}</label>
-      <input class="input" id="publishedYear" name="publishedYear" type="number" [(ngModel)]="model.publishedYear"/>
-    </div>
+      <div class="form-field">
+        <label for="isbn">{{ 'TALE.ISBN' | t }}</label>
+        <div class="input-row">
+          <input class="input" id="isbn" name="isbn" [(ngModel)]="model.isbn" />
 
-    <div class="form-field">
-      <label for="coverUrl">{{ 'TALE.COVER_URL' | t }}</label>
-      <input class="input" id="coverUrl" name="coverUrl" [(ngModel)]="model.coverUrl"/>
-    </div>
-
-    <div class="form-field">
-      <label for="tags">Tags (comma separated)</label>
-      <input class="input" id="tags" name="tags" [(ngModel)]="model.tags"/>
+          @if (!editId) {
+            <button
+              type="button"
+              class="btn"
+              (click)="loadFromOpenLibrary()"
+              [disabled]="importing || saving || !model.isbn"
+              title="Load from Open Library"
+            >
+              @if (importing) {
+                {{ 'COMMON.LOADING' | t }}...
+              } @else {
+                {{ 'TALE.LOAD_OPEN_LIB' | t }}
+              }
+            </button>
+          }
+        </div>
+      </div>
     </div>
 
     <div class="form-field">

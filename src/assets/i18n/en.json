@@ -31,7 +31,8 @@
     "EDIT": "Edit",
     "DELETE": "Delete",
     "BODY": "Body",
-    "BY": "by"
+    "BY": "by",
+    "LOADING": "Loading"
   },
   "AUTH": {
     "CREATE_ACCOUNT": "Create account",
@@ -45,7 +46,10 @@
     "ISBN": "ISBN",
     "PUBLISHED_YEAR": "Published year",
     "PAGES": "Pages",
-    "COVER_URL": "Cover URL"
+    "COVER_URL": "Cover URL",
+    "EDIT_TALE": "Edit Tale",
+    "ADD_TALE": "Add Tale",
+    "LOAD_OPEN_LIB": "Load from Open Library"
   },
   "REVIEW": {
     "EDIT_TITLE": "Edit Review",

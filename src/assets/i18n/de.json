@@ -31,7 +31,8 @@
     "EDIT": "Bearbeiten",
     "DELETE": "Löschen",
     "BODY": "Text",
-    "BY": "von"
+    "BY": "von",
+    "LOADING": "Lade"
   },
   "AUTH": {
     "CREATE_ACCOUNT": "Konto erstellen",
@@ -45,7 +46,10 @@
     "ISBN": "ISBN",
     "PUBLISHED_YEAR": "Erscheinungsjahr",
     "PAGES": "Seiten",
-    "COVER_URL": "Cover-URL"
+    "COVER_URL": "Cover-URL",
+    "EDIT_TALE": "Geschichte bearbeiten",
+    "ADD_TALE": "Geschichte hinzufügen",
+    "LOAD_OPEN_LIB": "Lade von Open Library"
   },
   "REVIEW": {
     "EDIT_TITLE": "Bewertung bearbeiten",
