@@ -1,74 +1,84 @@
 {
-  "NAV": {
-    "TALES": "Tales",
-    "BOOKSHELF": "Bookshelf",
-    "NEW_TALE": "+ New Tale",
-    "LOGIN": "Login",
-    "REGISTER": "Register",
-    "LOGOUT": "Logout"
+  "AUTH": {
+    "AGREE_PRIVACY": "I agree to the privacy policy",
+    "CREATE_ACCOUNT": "Create account"
   },
-  "LEGAL": {
-    "PRIVACY": "Privacy Policy",
-    "IMPRINT": "Imprint"
-  },
-  "FOOTER": {
-    "LANGUAGE": "Language",
-    "EN": "English",
-    "DE": "German"
+  "BOOKSHELF": {
+    "EMPTY_FILTER": "No items found for this filter.",
+    "TITLE": "My Bookshelf"
   },
   "COMMON": {
-    "TITLE": "Title",
-    "AUTHOR": "Author",
-    "DESCRIPTION": "Description",
-    "USERNAME": "Username",
-    "PASSWORD": "Password",
-    "CONFIRM_PASSWORD": "Confirm password",
-    "PASSWORDS_NOT_MATCH": "Passwords do not match.",
-    "SAVE": "Save",
-    "CREATE": "Create",
-    "CANCEL": "Cancel",
     "ALL": "All",
-    "EDIT": "Edit",
-    "DELETE": "Delete",
+    "AUTHOR": "Author",
     "BODY": "Body",
     "BY": "by",
-    "LOADING": "Loading"
+    "CANCEL": "Cancel",
+    "CONFIRM_PASSWORD": "Confirm password",
+    "CREATE": "Create",
+    "DELETE": "Delete",
+    "DESCRIPTION": "Description",
+    "EDIT": "Edit",
+    "LOADING": "Loading",
+    "PASSWORD": "Password",
+    "PASSWORDS_NOT_MATCH": "Passwords do not match.",
+    "SAVE": "Save",
+    "TITLE": "Title",
+    "USERNAME": "Username"
   },
-  "AUTH": {
-    "CREATE_ACCOUNT": "Create account",
-    "AGREE_PRIVACY": "I agree to the privacy policy"
+  "FOOTER": {
+    "DE": "German",
+    "EN": "English",
+    "LANGUAGE": "Language"
+  },
+  "LEGAL": {
+    "IMPRINT": "Imprint",
+    "PRIVACY": "Privacy Policy"
+  },
+  "NAV": {
+    "BOOKSHELF": "Bookshelf",
+    "LOGIN": "Login",
+    "LOGOUT": "Logout",
+    "NEW_TALE": "+ New Tale",
+    "REGISTER": "Register",
+    "TALES": "Tales"
+  },
+  "REVIEW": {
+    "ADD_REVIEW": "Add Review",
+    "EDIT_TITLE": "Edit Review",
+    "NEW_TITLE": "New Review",
+    "REVIEWS": "Reviews",
+    "REVIEW_THIS_TALE": "Review this tale",
+    "YOUR_RATING": "Your rating"
+  },
+  "STATUS": {
+    "DISCONTINUED": "Discontinued",
+    "MY_STATUS": "My status",
+    "READ": "Already read",
+    "READING": "Currently reading",
+    "SELECT": "Select Status",
+    "WANT_TO_READ": "Want to read"
+  },
+  "TALE": {
+    "ADD_TALE": "Add Tale",
+    "COVER_URL": "Cover URL",
+    "EDIT_TALE": "Edit Tale",
+    "ISBN": "ISBN",
+    "LOAD_OPEN_LIB": "Load from Open Library",
+    "PAGES": "Pages",
+    "PUBLISHED_YEAR": "Published year"
   },
   "TALES": {
     "LIST_TITLE": "Tales",
     "NO_TALES": "No tales found."
   },
-  "TALE": {
-    "ISBN": "ISBN",
-    "PUBLISHED_YEAR": "Published year",
-    "PAGES": "Pages",
-    "COVER_URL": "Cover URL",
-    "EDIT_TALE": "Edit Tale",
-    "ADD_TALE": "Add Tale",
-    "LOAD_OPEN_LIB": "Load from Open Library"
-  },
-  "REVIEW": {
-    "EDIT_TITLE": "Edit Review",
-    "NEW_TITLE": "New Review",
-    "YOUR_RATING": "Your rating",
-    "ADD_REVIEW": "Add Review",
-    "REVIEW_THIS_TALE": "Review this tale",
-    "REVIEWS": "Reviews"
-  },
-  "BOOKSHELF": {
-    "TITLE": "My Bookshelf",
-    "EMPTY_FILTER": "No items found for this filter."
-  },
-  "STATUS": {
-    "SELECT": "Select Status",
-    "WANT_TO_READ": "Want to read",
-    "READING": "Currently reading",
-    "READ": "Already read",
-    "DISCONTINUED": "Discontinued",
-    "MY_STATUS": "My status"
+  "WELCOME": {
+    "CLOSE": "Got it",
+    "FEATURES": {
+      "MANAGE": "Organize your personal bookshelf by reading status.",
+      "RATE": "Add ratings and notes to remember what you thought.",
+      "TRACK": "Keep a list of books you want to read and have finished."
+    },
+    "INTRO": "This site helps you track your reading life.",
+    "TITLE": "Welcome to Taufer Tales"
   }
 }

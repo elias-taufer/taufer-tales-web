@@ -1,74 +1,84 @@
 {
-  "NAV": {
-    "TALES": "Geschichten",
-    "BOOKSHELF": "Bücherregal",
-    "NEW_TALE": "+ Neue Geschichte",
-    "LOGIN": "Anmelden",
-    "REGISTER": "Registrieren",
-    "LOGOUT": "Abmelden"
+  "AUTH": {
+    "AGREE_PRIVACY": "Ich stimme der Datenschutzerklärung zu",
+    "CREATE_ACCOUNT": "Konto erstellen"
   },
-  "LEGAL": {
-    "PRIVACY": "Datenschutzerklärung",
-    "IMPRINT": "Impressum"
-  },
-  "FOOTER": {
-    "LANGUAGE": "Sprache",
-    "EN": "Englisch",
-    "DE": "Deutsch"
+  "BOOKSHELF": {
+    "EMPTY_FILTER": "Für diesen Filter wurden keine Einträge gefunden.",
+    "TITLE": "Mein Bücherregal"
   },
   "COMMON": {
-    "TITLE": "Titel",
-    "AUTHOR": "Autor",
-    "DESCRIPTION": "Beschreibung",
-    "USERNAME": "Benutzername",
-    "PASSWORD": "Passwort",
-    "CONFIRM_PASSWORD": "Passwort bestätigen",
-    "PASSWORDS_NOT_MATCH": "Passwörter stimmen nicht überein.",
-    "SAVE": "Speichern",
-    "CREATE": "Erstellen",
-    "CANCEL": "Abbrechen",
     "ALL": "Alle",
-    "EDIT": "Bearbeiten",
-    "DELETE": "Löschen",
+    "AUTHOR": "Autor",
     "BODY": "Text",
     "BY": "von",
-    "LOADING": "Lade"
+    "CANCEL": "Abbrechen",
+    "CONFIRM_PASSWORD": "Passwort bestätigen",
+    "CREATE": "Erstellen",
+    "DELETE": "Löschen",
+    "DESCRIPTION": "Beschreibung",
+    "EDIT": "Bearbeiten",
+    "LOADING": "Lade",
+    "PASSWORD": "Passwort",
+    "PASSWORDS_NOT_MATCH": "Passwörter stimmen nicht überein.",
+    "SAVE": "Speichern",
+    "TITLE": "Titel",
+    "USERNAME": "Benutzername"
   },
-  "AUTH": {
-    "CREATE_ACCOUNT": "Konto erstellen",
-    "AGREE_PRIVACY": "Ich stimme der Datenschutzerklärung zu"
+  "FOOTER": {
+    "DE": "Deutsch",
+    "EN": "Englisch",
+    "LANGUAGE": "Sprache"
+  },
+  "LEGAL": {
+    "IMPRINT": "Impressum",
+    "PRIVACY": "Datenschutzerklärung"
+  },
+  "NAV": {
+    "BOOKSHELF": "Bücherregal",
+    "LOGIN": "Anmelden",
+    "LOGOUT": "Abmelden",
+    "NEW_TALE": "+ Neue Geschichte",
+    "REGISTER": "Registrieren",
+    "TALES": "Geschichten"
+  },
+  "REVIEW": {
+    "ADD_REVIEW": "Bewertung hinzufügen",
+    "EDIT_TITLE": "Bewertung bearbeiten",
+    "NEW_TITLE": "Neue Bewertung",
+    "REVIEWS": "Bewertungen",
+    "REVIEW_THIS_TALE": "Bewerte diese Geschichte",
+    "YOUR_RATING": "Deine Bewertung"
+  },
+  "STATUS": {
+    "DISCONTINUED": "Abgebrochen",
+    "MY_STATUS": "Mein Status",
+    "READ": "Schon gelesen",
+    "READING": "Lese ich gerade",
+    "SELECT": "Status wählen",
+    "WANT_TO_READ": "Will ich lesen"
+  },
+  "TALE": {
+    "ADD_TALE": "Geschichte hinzufügen",
+    "COVER_URL": "Cover-URL",
+    "EDIT_TALE": "Geschichte bearbeiten",
+    "ISBN": "ISBN",
+    "LOAD_OPEN_LIB": "Lade von Open Library",
+    "PAGES": "Seiten",
+    "PUBLISHED_YEAR": "Erscheinungsjahr"
   },
   "TALES": {
     "LIST_TITLE": "Geschichten",
     "NO_TALES": "Keine Geschichten gefunden."
   },
-  "TALE": {
-    "ISBN": "ISBN",
-    "PUBLISHED_YEAR": "Erscheinungsjahr",
-    "PAGES": "Seiten",
-    "COVER_URL": "Cover-URL",
-    "EDIT_TALE": "Geschichte bearbeiten",
-    "ADD_TALE": "Geschichte hinzufügen",
-    "LOAD_OPEN_LIB": "Lade von Open Library"
-  },
-  "REVIEW": {
-    "EDIT_TITLE": "Bewertung bearbeiten",
-    "NEW_TITLE": "Neue Bewertung",
-    "YOUR_RATING": "Deine Bewertung",
-    "ADD_REVIEW": "Bewertung hinzufügen",
-    "REVIEW_THIS_TALE": "Bewerte diese Geschichte",
-    "REVIEWS": "Bewertungen"
-  },
-  "BOOKSHELF": {
-    "TITLE": "Mein Bücherregal",
-    "EMPTY_FILTER": "Für diesen Filter wurden keine Einträge gefunden."
-  },
-  "STATUS": {
-    "SELECT": "Status wählen",
-    "WANT_TO_READ": "Will ich lesen",
-    "READING": "Lese ich gerade",
-    "READ": "Schon gelesen",
-    "DISCONTINUED": "Abgebrochen",
-    "MY_STATUS": "Mein Status"
+  "WELCOME": {
+    "CLOSE": "Verstanden",
+    "FEATURES": {
+      "MANAGE": "Organisiere dein persönliches Bücherregal nach Lesestatus.",
+      "RATE": "Füge Bewertungen und Notizen hinzu, um deine Eindrücke festzuhalten.",
+      "TRACK": "Führe eine Liste von Büchern, die du lesen willst und bereits gelesen hast."
+    },
+    "INTRO": "Diese Seite hilft dir, dein Leseleben zu verfolgen.",
+    "TITLE": "Willkommen bei Taufer Tales"
   }
 }

@@ -1,0 +1,16 @@
+<div class="backdrop" role="dialog" aria-modal="true" aria-labelledby="welcome-title">
+  <div class="modal">
+    <h2 id="welcome-title">{{ 'WELCOME.TITLE' | t }}</h2>
+    <p class="lead">{{ 'WELCOME.INTRO' | t }}</p>
+
+    <ul class="features">
+      <li>{{ 'WELCOME.FEATURES.TRACK' | t }}</li>
+      <li>{{ 'WELCOME.FEATURES.RATE' | t }}</li>
+      <li>{{ 'WELCOME.FEATURES.MANAGE' | t }}</li>
+    </ul>
+
+    <div class="actions">
+      <button type="button" class="btn" (click)="onClose()">{{ 'WELCOME.CLOSE' | t }}</button>
+    </div>
+  </div>
+</div>
