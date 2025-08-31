@@ -4,7 +4,7 @@
     <input class="input" style="max-width:320px;" #q placeholder="Search" (input)="search(q.value)" />
   </div>
 
-  <div class="grid tale-card-row">
+  <div class="grid">
     @for (t of tales(); track t.id) {
       <tt-tale-tile
         [tale]="t"
