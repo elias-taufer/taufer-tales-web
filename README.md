@@ -6,8 +6,6 @@ It provides a modern interface to browse tales, manage your bookshelf, and write
 
 Access the site under https://taufer.eu
 
----
-
 ##  Features
 
 -  Create your account and Login (User authentication with James Web Token)
@@ -16,8 +14,6 @@ Access the site under https://taufer.eu
 -  Switch between Languages (EN/DE via `assets/i18n`)
 -  Creat new tales or import them by their isbn from https://openlibrary.org/
 -  Edit existing tales and reviews.
-
----
 
 ##  License
 
